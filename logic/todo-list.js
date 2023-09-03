@@ -21,20 +21,20 @@ export function deleteTask(list, taskToRemove) {
 
 export function getTotalTasksCount(list) {
   // should return the length of the list
-  return 0
+  return -1
 }
 
 export function getIncompleteTasksCount(list) {
   // should return the number of tasks in the list that are not complete
-  return 0
+  return -1
 }
 
 export function getCompletedTasksCount(list) {
   // should return the number of tasks in the list that are complete
-  return 0
+  return -1
 }
 
 export function checkIsEntireTodoListCompleted(list) {
   // should return true IF there are tasks in the list AND they are all complete
-  return false
+  return -1
 }
