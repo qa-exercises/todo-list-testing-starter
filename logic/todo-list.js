@@ -34,7 +34,7 @@ export function getCompletedTasksCount(list) {
   return 0
 }
 
-export function checkHasCompletedAllTasks(list) {
+export function checkIsEntireTodoListCompleted(list) {
   // should return true IF there are tasks in the list AND they are all complete
   return false
 }

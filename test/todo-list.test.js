@@ -1,4 +1,4 @@
-import { addTaskToList, toggleTaskComplete, deleteTask, getTotalTasksCount, getCompletedTasksCount, getIncompleteTasksCount, checkHasCompletedAllTasks } from '../logic/todo-list.js'
+import { addTaskToList, toggleTaskComplete, deleteTask, getTotalTasksCount, getCompletedTasksCount, getIncompleteTasksCount, checkIsEntireTodoListCompleted } from '../logic/todo-list.js'
 
 describe('To-do list functionality', () => {
 

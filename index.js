@@ -1,4 +1,4 @@
-import { addTaskToList, checkHasCompletedAllTasks, deleteTask, getCompletedTasksCount, getIncompleteTasksCount, getTotalTasksCount, toggleTaskComplete } from './logic/todo-list.js'
+import { addTaskToList, checkIsEntireTodoListCompleted as checkIsEntireTodoListCompleted, deleteTask, getCompletedTasksCount, getIncompleteTasksCount, getTotalTasksCount, toggleTaskComplete } from './logic/todo-list.js'
 
 let tasksList = []
 
@@ -43,8 +43,8 @@ function render(list) {
   document.getElementById('completed-tasks-count').textContent = getCompletedTasksCount(list)
   document.getElementById('incomplete-tasks-count').textContent = getIncompleteTasksCount(list)
 
-  const hasCompletedAllTasks = checkHasCompletedAllTasks(list)
+  const isListCompleted = checkIsEntireTodoListCompleted(list)
 
-  document.getElementById('stats-section-title').textContent = hasCompletedAllTasks ? 'All done!' : 'Progress'
-  document.getElementById('stats-section').setAttribute('data-complete', hasCompletedAllTasks.toString())
+  document.getElementById('stats-section-title').textContent = isListCompleted ? 'All done!' : 'Progress'
+  document.getElementById('stats-section').setAttribute('data-complete', isListCompleted.toString())
 }
