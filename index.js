@@ -1,4 +1,4 @@
-import { addTaskToList, checkIsEntireTodoListCompleted as checkIsEntireTodoListCompleted, deleteTask, getCompletedTasksCount, getIncompleteTasksCount, getTotalTasksCount, toggleTaskComplete } from './logic/todo-list.js'
+import { addTaskToList, checkIsEntireTodoListCompleted, deleteTask, getCompletedTasksCount, getIncompleteTasksCount, getTotalTasksCount, toggleTaskComplete } from './logic/todo-list.js'
 
 let tasksList = []
 
