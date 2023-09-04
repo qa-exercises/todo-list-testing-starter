@@ -1,6 +1,6 @@
-import { addTaskToList, checkIsEntireTodoListCompleted, deleteTask, getCompletedTasksCount, getIncompleteTasksCount, getTotalTasksCount, toggleTaskComplete } from './logic/todo-list.js'
+import { TodoList, Task } from './logic/todo-list.js'
 
-let tasksList = []
+let tasksList = new TodoList('To-do')
 
 document.getElementById('task-form').addEventListener('submit', handleSubmitTask)
 render(tasksList)
@@ -8,12 +8,9 @@ render(tasksList)
 function handleSubmitTask(e) {
   e.preventDefault()
   const taskNameInputField = document.getElementById('input-task-name')
-  const newTask = {
-    name: taskNameInputField.value,
-    isComplete: false
-  }
+  const newTask = new Task(taskNameInputField.value)
 
-  addTaskToList(tasksList, newTask)
+  tasksList.addTask(newTask)
   render(tasksList)
   taskNameInputField.value = ''
 }
@@ -21,17 +18,20 @@ function handleSubmitTask(e) {
 function render(list) {
   const todoListElement = document.getElementById('todo-list')
   todoListElement.innerHTML = ''
-  for (const task of list) {
+  for (const task of list.tasks) {
     const taskElement = document.createElement('li')
     const label = document.createElement('label')
     const checkbox = document.createElement('input')
     const deleteButton = document.createElement('button')
+
     checkbox.type = 'checkbox'
     checkbox.name = 'isComplete'
     checkbox.checked = !!task.isComplete
-    checkbox.addEventListener('change', () => { toggleTaskComplete(task); render(list) })
+    checkbox.addEventListener('change', () => { task.toggleCompletion(); render(list) })
+
     deleteButton.textContent = '⨉'
-    deleteButton.addEventListener('click', () => { deleteTask(list, task); render(list) })
+    deleteButton.addEventListener('click', () => { list.deleteTask(task); render(list) })
+
     taskElement.appendChild(label)
     label.appendChild(checkbox)
     label.appendChild(document.createTextNode(task.name))
@@ -39,12 +39,12 @@ function render(list) {
     todoListElement.appendChild(taskElement)
   }
 
-  document.getElementById('total-tasks-count').textContent = getTotalTasksCount(list)
-  document.getElementById('completed-tasks-count').textContent = getCompletedTasksCount(list)
-  document.getElementById('incomplete-tasks-count').textContent = getIncompleteTasksCount(list)
+  document.getElementById('total-tasks-count').textContent = list.countTotalTasks()
+  document.getElementById('complete-tasks-count').textContent = list.countCompleteTasks()
+  document.getElementById('incomplete-tasks-count').textContent = list.countIncompleteTasks()
 
-  const isListCompleted = checkIsEntireTodoListCompleted(list)
+  const isListComplete = list.checkIsEntireListComplete()
 
-  document.getElementById('stats-section-title').textContent = isListCompleted ? 'All done!' : 'Progress'
-  document.getElementById('stats-section').setAttribute('data-complete', isListCompleted.toString())
+  document.getElementById('stats-section-title').textContent = isListComplete ? 'All done!' : 'Progress'
+  document.getElementById('stats-section').setAttribute('data-complete', isListComplete.toString())
 }

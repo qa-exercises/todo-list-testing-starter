@@ -1,40 +1,45 @@
-// 🎯 1: Write tests for these existing functions in /test/todo-list.test.js
+// Represents an individual task
+export class Task {
+  constructor(name, isComplete=false) {
+    this.name = name
+    this.isComplete = isComplete
+  }
 
-export function addTaskToList(list, task) {
-  if (!task.name) return
-  list.push(task)
-}
-
-export function toggleTaskComplete(task) {
-  task.isComplete = !task.isComplete
-}
-
-export function deleteTask(list, taskToRemove) {
-  const indexToRemove = list.indexOf(taskToRemove);
-  if (indexToRemove !== -1) {
-    list.splice(indexToRemove, 1);
+  toggleCompletion() {
+    this.isComplete = !this.isComplete
   }
 }
 
-// 🎯 2: Use test-driven development to complete remaining functionality
-// 💡 Write the tests first, then implement the logic for each of the following functions
+// Represents a list of tasks
+export class TodoList {
+  constructor() {
+    this.tasks = []
+  }
 
-export function getTotalTasksCount(list) {
-  // should return the length of the list
-  return -1
-}
+  addTask(taskToAdd) {
+    this.tasks.push(taskToAdd)
+  }
 
-export function getIncompleteTasksCount(list) {
-  // should return the number of tasks in the list that are not complete
-  return -1
-}
+  deleteTask(taskToRemove) {
+    const indexToRemove = this.tasks.indexOf(taskToRemove);
+    if (indexToRemove !== -1) {
+      this.tasks.splice(indexToRemove, 1);
+    }
+  }
+  
+  countTotalTasks() {
+    return -1
+  }
 
-export function getCompletedTasksCount(list) {
-  // should return the number of tasks in the list that are complete
-  return -1
-}
+  countIncompleteTasks() {
+    return -1
+  }
 
-export function checkIsEntireTodoListCompleted(list) {
-  // should return true IF there are tasks in the list AND they are all complete
-  return -1
+  countCompleteTasks() {
+    return -1
+  }
+
+  checkIsEntireListComplete() {
+    return -1
+  }
 }

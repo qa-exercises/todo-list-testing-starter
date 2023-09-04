@@ -1,35 +1,36 @@
-import { addTaskToList, toggleTaskComplete, deleteTask, getTotalTasksCount, getCompletedTasksCount, getIncompleteTasksCount, checkIsEntireTodoListCompleted } from '../logic/todo-list.js'
+import { Task, TodoList } from '../logic/todo-list.js'
 
 describe('To-do list functionality', () => {
 
-  test('Adding a task to a to-do list works', () => {
+  it('should correctly add a single new task to the to-do list', () => {
     // Arrange
-    const todoList = []
-    const newTask = { name: 'Test task', isComplete: false }
+    const todoList = new TodoList()
+    const newTask = new Task('Test task')
 
     // Act
-    addTaskToList(todoList, newTask)
-
+    todoList.addTask(newTask)
+    
     // Assert
-    expect(todoList).toEqual([newTask]) // 💡 Tip: use toBe() to compare primitive values (like numbers or booleans), and toEqual() to compare arrays/objects
+    // 💡 Tip: use toEqual() to compare arrays and objects, and toBe() to compare primitive values (like numbers or booleans)
+    expect(todoList.tasks).toEqual([newTask])
   })
 
-  test('Adding multiple tasks to a to-do list works', () => {
-    const todoList = []
-    const testTask1 = { name: 'Test task 1', isComplete: false }
-    const testTask2 = { name: 'Test task 2', isComplete: false }
+  it('should correctly add multiple new tasks to the to-do list', () => {
+    const todoList = new TodoList()
+    const testTask1 = new Task('Test task 1')
+    const testTask2 = new Task('Test task 2')
 
-    addTaskToList(todoList, testTask1)
-    addTaskToList(todoList, testTask2)
+    todoList.addTask(testTask1)
+    todoList.addTask(testTask2)
 
-    expect(todoList).toEqual([testTask1, testTask2])
+    expect(todoList.tasks).toEqual([testTask1, testTask2])
   })
 
-  test.skip('Toggling a task between complete and incomplete works', () => {
-
+  it.skip('should correctly toggle the completion status of a task', () => {
+    // 🎯 implement test here
   })
 
-  test.skip('Deleting a task from a to-do list works', () => {
-
+  it.skip('should correctly delete a task from a to-do list', () => {
+    // 🎯 implement test here
   })
 })
