@@ -17,7 +17,9 @@ export class TodoList {
   }
 
   addTask(taskToAdd) {
-    this.tasks.push(taskToAdd)
+    if (taskToAdd.name) {
+      this.tasks.push(taskToAdd)
+    }
   }
 
   deleteTask(taskToRemove) {

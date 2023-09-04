@@ -26,6 +26,10 @@ describe('To-do list functionality', () => {
     expect(todoList.tasks).toEqual([testTask1, testTask2])
   })
 
+  it.skip('should not add a task to a list if the task has no name', () => {
+    // 🎯 implement test here
+  })
+
   it.skip('should correctly toggle the completion status of a task', () => {
     // 🎯 implement test here
   })
