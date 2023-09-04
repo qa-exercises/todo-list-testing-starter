@@ -100,6 +100,7 @@ button:hover, input[type=submit]:hover {
   align-items: center;
   list-style-type: none;
   border-radius: 5px;
+  padding-inline: 4px;
 }
 
 #todo-list li:hover, #todo-list li:has(*:focus-visible) {
@@ -107,7 +108,7 @@ button:hover, input[type=submit]:hover {
 }
 
 #todo-list label {
-  padding: 4px;
+  padding-block: 8px;
   user-select: none;
   flex: 1;
 }
